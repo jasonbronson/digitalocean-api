@@ -18,11 +18,6 @@ func GetDropletsHandler(w http.ResponseWriter, r *http.Request, config *config.C
 		return
 	}
 
-	// for _, item := range droplets {
-	// 	//log.Printf("%s %d MB", item.Name, item.Memory)
-
-	// }
-
 	middleware.Response(w, droplets)
 
 }
