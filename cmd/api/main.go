@@ -34,6 +34,12 @@ func main() {
 	a.HandleFunc("/droplets/all", func(w http.ResponseWriter, r *http.Request) {
 		controller.GetDropletsHandler(w, r, &config)
 	}).Methods("GET")
+	a.HandleFunc("/droplets/create", func(w http.ResponseWriter, r *http.Request) {
+		controller.CreateDropletHandler(w, r, &config)
+	}).Methods("POST")
+	a.HandleFunc("/droplets/delete/{id}", func(w http.ResponseWriter, r *http.Request) {
+		controller.DeleteDropletHandler(w, r, &config)
+	}).Methods("DELETE")
 
 	http.Handle("/", r)
 

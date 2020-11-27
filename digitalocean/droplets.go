@@ -2,9 +2,35 @@ package digitalocean
 
 import (
 	"context"
+	"docontroller/utils"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/digitalocean/godo"
 )
+
+func CreateDroplet(ctx context.Context, client *godo.Client, dropletRequest *godo.DropletCreateRequest) (*godo.Droplet, error) {
+
+	droplet, response, err := client.Droplets.Create(ctx, dropletRequest)
+	if err != nil {
+		utils.LogError(err)
+		return nil, err
+	}
+	//debug
+	spew.Dump(response)
+	spew.Dump(droplet)
+	return droplet, nil
+}
+
+func DeleteDroplet(ctx context.Context, client *godo.Client, id int) (*godo.Response, error) {
+
+	response, err := client.Droplets.Delete(ctx, id)
+	if err != nil {
+		utils.LogError(err)
+		return nil, err
+	}
+	spew.Dump(response)
+	return response, nil
+}
 
 func GetDroplets(ctx context.Context, client *godo.Client) ([]godo.Droplet, error) {
 	// create a list to hold our droplets
