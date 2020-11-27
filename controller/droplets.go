@@ -5,7 +5,8 @@ import (
 	"docontroller/config"
 	"docontroller/digitalocean"
 	"docontroller/middleware"
-	logger "docontroller/middleware"
+	"docontroller/utils"
+
 	"net/http"
 )
 
@@ -14,7 +15,7 @@ func GetDropletsHandler(w http.ResponseWriter, r *http.Request, config *config.C
 	ctx := context.TODO()
 	droplets, err := digitalocean.GetDroplets(ctx, config.GodoClient)
 	if err != nil {
-		logger.LogError(err)
+		utils.LogError(err)
 		return
 	}
 

@@ -1,0 +1,27 @@
+version: "3"
+services:
+  docontroller:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: CompileDaemon -log-prefix=false -build="go build -o dist/docontroller ./cmd/api/main.go" -command="./dist/docontroller"
+    env_file: ./.env
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+  docontrollercron:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: CompileDaemon -log-prefix=false -build="go build -o dist/docontroller ./cmd/cron/main.go" -command="./dist/docontroller"
+    env_file: ./.env
+    volumes:
+      - .:/app
+    networks:
+      - backend
+
+networks:
+  backend:
