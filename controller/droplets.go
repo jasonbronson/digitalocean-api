@@ -5,6 +5,7 @@ import (
 	"docontroller/config"
 	"docontroller/digitalocean"
 	"docontroller/middleware"
+	"docontroller/repositories"
 	"docontroller/utils"
 
 	"net/http"
@@ -19,6 +20,7 @@ func GetDropletsHandler(w http.ResponseWriter, r *http.Request, config *config.C
 		return
 	}
 
+	repositories.CreateDroplets(droplets)
 	middleware.Response(w, droplets)
 
 }

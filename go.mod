@@ -11,7 +11,10 @@ require (
 	github.com/githubnemo/CompileDaemon v1.2.1 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/joho/godotenv v1.3.0
+	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/roylee0704/gron v0.0.0-20160621042432-e78485adab46
 	github.com/sirupsen/logrus v1.7.0
 	google.golang.org/api v0.35.0
+	gorm.io/driver/sqlite v1.1.3
+	gorm.io/gorm v1.20.7
 )
